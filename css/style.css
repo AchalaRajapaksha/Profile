@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-blog,
 #fh5co-pricing,
 #fh5co-contact {
-  padding: 7em 0;
+  padding: 3em 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {
@@ -790,7 +790,8 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-started .fh5co-heading {
   margin-bottom: 0;
 }
-#fh5co-started .fh5co-heading h2 {
+#fh5co-started .fh5co-heading 
+ {
   color: #fff;
   margin-bottom: 20px !important;
 }
@@ -904,6 +905,14 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-blog .blog-text h3 a {
   color: black;
 }
+
+#fh5co-consult h2{
+  color: #0000009f;
+}
+
+
+
+
 
 #fh5co-consult {
   display: -webkit-box;
