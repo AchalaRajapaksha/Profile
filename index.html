@@ -49,11 +49,180 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		.toggle {
+		  z-index: 4;
+		  position: absolute;
+		  top: 15px;
+		  right: 20px;
+	  }
+	  
+	  .toggle input[type='checkbox'] {
+		  display: none;
+	  }
+	  
+	  .toggle label {
+		  background-color: #d9d9d9;
+		  /* border: 2px solid transparent; */
+		  border-radius: 50px;
+		  cursor: pointer;
+		  box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.3), inset 0px -5px 5px rgba(255, 255, 255, 0.3);
+		  display: inline-flex;
+		  position: relative;
+		  justify-content: space-around;
+		  align-items: center;
+		  transition: all ease-in-out 0.3s;
+		  width: 80px;
+		  height: 40px;
+	  }
+	  
+	  .toggle label i {
+		  font-size: 22px;
+	  }
+	  
+	  .fa-moon {
+		  color: white;
+	  }
+	  
+	  .fa-sun {
+		  color: yellow;
+	  }
+	  
+	  .toggle label::after {
+		  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+		  background-color: #f2f2f2;
+		  border-radius: 50%;
+		  content: ' ';
+		  cursor: pointer;
+		  display: inline-block;
+		  position: absolute;
+		  left: 5px;
+		  top: 5px;
+		  transition: all ease-in-out 0.3s;
+		  width: 30px;
+		  height: 30px;
+	  }
+	  
+	  .toggle input[type='checkbox']:checked~label {
+		  background-color: #242424;
+	  }
+	  
+	  .toggle input[type='checkbox']:checked~label::after {
+		  background: linear-gradient(180deg, #777, #3a3a3a);
+		  transform: translateX(39px);
+	  }
+	  
+	  /* Dark Mode styles */
+	  body.dark-mode {
+		  background: #090707;
+	  }
+	  
+	  body.dark-mode .container {
+		  box-shadow: 1px 4px 8px 1px rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(48, 47, 47, 0.19);
+		  background-color: #000000;
+		  background-image: linear-gradient(316deg, #100f12 0%, #0b090a 74%);
+	  }
+	  
+	  body.dark-mode #inputA {
+		  background: rgba(0, 0, 0, 0.85);
+		  color: rgb(246, 244, 239);
+	  }
+	  
+	  body.dark-mode #inputB {
+		  background: rgba(0, 0, 255, 0.850);
+		  color: rgb(247, 245, 240);
+	  }
+	  
+	  body.dark-mode .scoreValue {
+		  color: rgb(246, 244, 241);
+		  background-color: rgba(8, 11, 8, 0.85);
+	  }
+	  
+	  body.dark-mode span {
+		  color: rgb(247, 247, 243);
+		  background: rgb(20, 19, 19);
+	  }
+	  
+	  body.dark-mode .teams button {
+		  border: 2px solid white;
+		  background: transparent;
+		  color: whitesmoke;
+	  }
+	  
+	  body.dark-mode .teams button:hover {
+		  background: yellow;
+		  color: black;
+	  }
+	  
+	  body.dark-mode #resetBtn {
+		  border: 2px solid white;
+		  color: white;
+	  }
+	  
+	  body.dark-mode #resetBtn:hover {
+		  color: black;
+		  background: orangered;
+	  }
+	  
+	  body.dark-mode #gameReset {
+		  border: 2px solid white;
+		  color: white;
+	  }
+	  
+	  body.dark-mode #gameReset:hover {
+		  color: black;
+		  background: orangered;
+	  }
+	  
+	  body.dark-mode .details {
+		  color: whitesmoke;
+	  }
+	  
+	  body.dark-mode .details input {
+		  color: white;
+	  }
+	  
+	  body.dark-mode #message {
+		  z-index: 3;
+		  padding: 10px 20px;
+		  background: rgba(16, 15, 15, 0.5);
+		  border: 5px solid rgb(112, 111, 111);
+		  color: rgb(255, 248, 248);
+		 
+	  } 
 
+	  </style>
+	  
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	  crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body>
+    	<div class="toggle" style="margin-top: 80px;">
+			<input type="checkbox" name="" id="toggle">
+			<label for="toggle">
+				<i class="fa-solid fa-moon"></i>
+				<i class="fa-solid fa-sun"></i>
+			</label>
+		</div>
+		  <script>
+		const toggle = document.getElementById('toggle');
+		const body = document.body;
 		
-	<div class="fh5co-loader"></div>
+		toggle.addEventListener('input', (e) => {
+			const isChecked = e.target.checked;
+		
+			if (isChecked) {
+				body.classList.add('dark-mode');
+			} else {
+				body.classList.remove('dark-mode');
+			}
+		});
+		</script>
+		
+	<div class="fh5co-loader">
+	
+	</div>
 	
 	<div id="page">	
 	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
@@ -85,22 +254,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>About Me</h2>
+					<h2 style="color: #686666 !important; ">About Me</h2>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<ul class="info">
-						<li><span class="first-block">Name:</span><span class="second-block">Achala Rajapaksha</span></li>
-						<li><span class="first-block">Phone:</span><span class="second-block">+ 94 761681064</span></li>
-						<li><span class="first-block">Email:</span><span class="second-block">achalarajapaksha01@gmail.com</span></li>
-						<li><span class="first-block">Website:</span><span class="second-block">achalarajapaksha.github.io/Profile/</span></li>
+						<li><span class="first-block"  style="color: #7d7979;">Name:</span><span class="second-block"  style="color: #7a7979;">Achala Rajapaksha</span></li>
+						<li><span class="first-block"  style="color: #828080;">Phone:</span><span class="second-block" style="color: #828080;">+ 94 761681064</span></li>
+						<li><span class="first-block" style="color: #828080;">Email:</span><span class="second-block" style="color: #828080;">achalarajapaksha01@gmail.com</span></li>
+						<li><span class="first-block" style="color: #828080;">Website:</span><span class="second-block" style="color: #828080;">achalarajapaksha.github.io/Profile/</span></li>
 					</ul>
 				</div>
 				<div class="col-md-6">
-					<h2>Hello There!</h2>
-					<p> I am an enthusiastic undergraduate web developer with a passion for creating innovative and dynamic online experiences. With a strong foundation in web development technologies and programming languages, I am constantly driven by my curiosity to explore new projects and push the boundaries of what is possible on the web. </p>
-					<p>From the early stages of my education, I discovered my fascination with web development and its ever-evolving nature. I thrive on the challenges presented by new projects, as they allow me to delve into uncharted territories and continuously expand my skills. Whether it's crafting visually stunning user interfaces or developing robust back-end functionalities, I am always eager to tackle fresh ideas and find creative solutions.</p>
+					<h2 style="color: #6f6e6e;">Hello There!</h2>
+					<p style="color: #717171;"> I am an enthusiastic undergraduate web developer with a passion for creating innovative and dynamic online experiences. With a strong foundation in web development technologies and programming languages, I am constantly driven by my curiosity to explore new projects and push the boundaries of what is possible on the web. </p>
+					<p style="color: #6e6e6e;">From the early stages of my education, I discovered my fascination with web development and its ever-evolving nature. I thrive on the challenges presented by new projects, as they allow me to delve into uncharted territories and continuously expand my skills. Whether it's crafting visually stunning user interfaces or developing robust back-end functionalities, I am always eager to tackle fresh ideas and find creative solutions.</p>
 					<p>
 						<ul class="fh5co-social-icons">
 							<li><a href="https://github.com/AchalaRajapaksha"><i class="icon-github"></i></a></li>
@@ -118,7 +287,7 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>My Resume</h2>
+					<h2 style="color: #5b5959;">My Resume</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -131,10 +300,10 @@
 							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h3 class="timeline-title">Web Developer</h3>
+									<h3 class="timeline-title" style="color: #828080;">Web Developer</h3>
 								</div>
 								<div class="timeline-body">
-									<p>As a web developer, my passion lies in crafting innovative and user-friendly digital experiences. With a solid foundation in programming languages such as HTML, CSS, and JavaScript, I strive to build visually appealing and functional websites that exceed client expectations. I possess a strong understanding of responsive design principles, ensuring that websites are optimized for various devices and screen sizes.</p>
+									<p style="color: #656464;">As a web developer, my passion lies in crafting innovative and user-friendly digital experiences. With a solid foundation in programming languages such as HTML, CSS, and JavaScript, I strive to build visually appealing and functional websites that exceed client expectations. I possess a strong understanding of responsive design principles, ensuring that websites are optimized for various devices and screen sizes.</p>
 								</div>
 							</div>
 						</li>
@@ -142,11 +311,11 @@
 							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h3 class="timeline-title">Technical Assistant</h3>
-									<span class="company">Noratel International (Pvt) Ltd - 2019 - 2023</span>
+									<h3 class="timeline-title" style="color: #828080;">Technical Assistant</h3>
+									<span class="company" style="color: #828080;">Noratel International (Pvt) Ltd - 2019 - 2023</span>
 								</div>
-								<div class="timeline-body">
-									<p>As a technical assistant, responsible to prepare technical documents and support engineers to handle production issues.</p>
+								<div class="timeline-body" style="color: #828080;">
+									<p style="color: #828080;">As a technical assistant, responsible to prepare technical documents and support engineers to handle production issues.</p>
 								</div>
 							</div>
 						</li>
@@ -154,8 +323,8 @@
 							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h3 class="timeline-title">Insurance Advisor</h3>
-									<span class="company">Union Assurance PLC - 2017 - 2019</span>
+									<h3 class="timeline-title" style="color: #828080;">Insurance Advisor</h3>
+									<span class="company" style="color: #828080;">Union Assurance PLC - 2017 - 2019</span>
 								</div>
 								<div class="timeline-body">
 									
@@ -165,17 +334,17 @@
 
 						<br>
 						<li class="timeline-heading text-center animate-box">
-							<div><h3>Education</h3></div>
+							<div><h3 style="color: #828080;">Education</h3></div>
 						</li>
 						<li class="timeline-inverted animate-box">
 							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelor of Software Engineering Degree</h3>
-									<span class="company">Open University of Sri Lanka  - 2021</span>
+									<h3 class="timeline-title"style="color: #828080;">Bachelor of Software Engineering Degree</h3>
+									<span class="company" style="color: #828080;">Open University of Sri Lanka  - 2021</span>
 								</div>
 								<div class="timeline-body">
-									<p>As an undergraduate student at Open University Sri Lanka, I am on a relentless pursuit of knowledge and personal growth. <br>  As a tech-savvy individual, I am particularly drawn to the fascinating world of web development. I have acquired a solid foundation in programming languages like HTML, CSS, and JavaScript, enabling me to design and build engaging websites. Moreover, I am continuously honing my skills by staying updated with the latest industry trends and exploring new technologies. </p>
+									<p style="color: #828080;">As an undergraduate student at Open University Sri Lanka, I am on a relentless pursuit of knowledge and personal growth. <br>  As a tech-savvy individual, I am particularly drawn to the fascinating world of web development. I have acquired a solid foundation in programming languages like HTML, CSS, and JavaScript, enabling me to design and build engaging websites. Moreover, I am continuously honing my skills by staying updated with the latest industry trends and exploring new technologies. </p>
 								</div>
 							</div>
 						</li>
